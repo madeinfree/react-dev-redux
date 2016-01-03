@@ -47,19 +47,16 @@ class Counter extends Component {
 
     return (
       <div>
-        {counterNumber}
-        <button onClick={actions.COUNTER_INCREMENT}>+</button>
-        {' '}
-        <button onClick={actions.COUNTER_DECREMENT}>-</button>
+        <h1>The number is: {counterNumber}</h1>
+        <div>
+          <button onClick={actions.COUNTER_INCREMENT}>+</button>
+          {' '}
+          <button onClick={actions.COUNTER_DECREMENT}>-</button>
+        </div>
       </div>
     );
   }
 };
-
-Counter.propTypes = {
-  counterNumber: PropTypes.number.isRequired,
-  actions: PropTypes.object.isRequired
-}
 
 export default connect(
   select,

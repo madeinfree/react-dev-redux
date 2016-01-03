@@ -1,1 +1,1 @@
-export { default as counterData } from './counterData';
+// export { default as counterData } from './counterData';

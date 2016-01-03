@@ -31,7 +31,11 @@ export default class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <Counter />
+        <div>
+          <h1>Stage1: Number</h1>
+          <Counter />
+          <hr />
+        </div>
       </Provider>
     );
   }
