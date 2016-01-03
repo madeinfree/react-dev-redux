@@ -1,39 +1,22 @@
 import React, { Component, PropTypes } from 'react';
 import render from 'react-dom';
 
-import { connect } from 'react-redux';
-import { createStore, bindActionCreators } from 'redux';
-import counterReducer from '../../stores/counterData';
-
-import * as CounterActions from '../../actions/counterAction'
-
-
 const CounterHandlers = {
   _calculation(props, context) {
-
     return {
 
     }
 
   },
-  _onIncrement() {
-
+  _onIncrement(actions) {
+    return actions.COUNTER_INCREMENT
   },
-  _onDecrement() {
-
+  _onDecrement(actions) {
+    return actions.COUNTER_DECREMENT
   }
 }
 
-function select(state) {
-  return { counterNumber: state.counterNumber };
-}
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(CounterActions, dispatch)
-  }
-}
-
-class Counter extends Component {
+export default class Counter extends Component {
   constructor(props, context, oldState) {
     super(props, context, oldState);
     for (let fn in CounterHandlers) {
@@ -44,21 +27,16 @@ class Counter extends Component {
 
   render() {
     const { counterNumber, actions } = this.props;
-
+    const { _onIncrement, _onDecrement } = this;
     return (
       <div>
         <h1>The number is: {counterNumber}</h1>
         <div>
-          <button onClick={actions.COUNTER_INCREMENT}>+</button>
+          <button onClick={_onIncrement(actions)}>+</button>
           {' '}
-          <button onClick={actions.COUNTER_DECREMENT}>-</button>
+          <button onClick={_onDecrement(actions)}>-</button>
         </div>
       </div>
     );
   }
 };
-
-export default connect(
-  select,
-  mapDispatchToProps
-)(Counter)

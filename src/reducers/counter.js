@@ -3,11 +3,11 @@ import {
   COUNTER_DECREMENT
 } from '../constants/actionType';
 
-let initialState = {
+const initialState = {
   counterNumber: 0
 }
 
-export default function counterReducer(state = initialState, action) {
+export default (state = initialState, action) => {
   switch (action.type) {
 
     case COUNTER_INCREMENT:

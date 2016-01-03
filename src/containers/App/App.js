@@ -1,25 +1,22 @@
 import React, { Component } from 'react';
 import render from 'react-dom';
-import { createStore } from 'redux';
-import { Provider } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
 import Counter from '../Counter/Counter';
+import List from '../List/List';
 
-import counterReducer from '../../stores/counterData';
-
-const store = createStore(counterReducer);
+import * as CounterActions from '../../actions/counterAction'
 
 const AppHandlers = {
   _calculation(props, context) {
-
     return {
-
     }
 
   }
 }
 
-export default class App extends Component {
+class App extends Component {
   constructor(props, context, oldState) {
     super(props, context, oldState);
     for (let fn in AppHandlers) {
@@ -29,14 +26,29 @@ export default class App extends Component {
   }
 
   render() {
+    const { counterNumber, actions } = this.props;
     return (
-      <Provider store={store}>
-        <div>
-          <h1>Stage1: Number</h1>
-          <Counter />
-          <hr />
-        </div>
-      </Provider>
+      <div>
+        <h1>Stage1: Number</h1>
+        <Counter counterNumber={counterNumber} actions={actions}/>
+        <hr />
+        <h1>Stage2: List</h1>
+        <List />
+      </div>
     );
   }
 };
+
+const mapStateToProps = (state) => {
+  return { counterNumber: state.counter.counterNumber };
+}
+const mapDispatchToProps = (dispatch) => {
+  return {
+    actions: bindActionCreators(CounterActions, dispatch)
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App)
