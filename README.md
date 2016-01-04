@@ -1,4 +1,5 @@
 # react-dev-redux
 # TODO - LIST
 ### 1. stage1 - INCREMENT and DECREMENT [OK]
-### 2. stage2 - List ADDTODO
+### 2. stage2 - List ADDTODO [OK]
+### 3. stage3 - List OPERATION

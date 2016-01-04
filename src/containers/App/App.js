@@ -35,6 +35,7 @@ class App extends Component {
         <hr />
         <h1>Stage2: List</h1>
         <List listProps={listProps} {...ListActions} />
+        <h1>Stage3: List Operation</h1>
       </div>
     );
   }
