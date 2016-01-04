@@ -6,12 +6,13 @@ export default class ListItem extends Component {
     super(props, context, oldState);
   }
   render() {
-    let items = [1,2,3].map((v, idx) => {
-      return <Item key={idx} value={v} />
+    let { items } = this.props
+    let itemList = items.map((v, idx) => {
+      return <Item key={idx} value={v.text} />
       })
     return (
       <ul>
-        {items}
+        {itemList}
       </ul>
     );
   }

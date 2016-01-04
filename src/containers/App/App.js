@@ -7,6 +7,7 @@ import Counter from '../Counter/Counter';
 import List from '../List/List';
 
 import * as CounterActions from '../../actions/counterAction'
+import * as ListActions from '../../actions/listAction';
 
 const AppHandlers = {
   _calculation(props, context) {
@@ -26,25 +27,29 @@ class App extends Component {
   }
 
   render() {
-    const { counterNumber, actions } = this.props;
+    const { counterNumber, listProps ,CounterActions, ListActions } = this.props;
     return (
       <div>
         <h1>Stage1: Number</h1>
-        <Counter counterNumber={counterNumber} actions={actions}/>
+        <Counter counterNumber={counterNumber} actions={CounterActions}/>
         <hr />
         <h1>Stage2: List</h1>
-        <List />
+        <List listProps={listProps} {...ListActions} />
       </div>
     );
   }
 };
 
 const mapStateToProps = (state) => {
-  return { counterNumber: state.counter.counterNumber };
+  return {
+    counterNumber: state.counter.counterNumber,
+    listProps: state.list
+  };
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    actions: bindActionCreators(CounterActions, dispatch)
+    ListActions: bindActionCreators(ListActions, dispatch),
+    CounterActions: bindActionCreators(CounterActions, dispatch)
   }
 }
 
