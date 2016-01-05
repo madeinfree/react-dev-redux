@@ -4,3 +4,7 @@ export const COUNTER_DECREMENT = 'COUNTER_DECREMENT';
 
 //List
 export const ADD_TEXT = 'CHANGE_TEXT';
+
+//ListOperation
+export const ADD_OPERATION_TEXT = 'ADD_OPERATION_TEXT';
+export const OPERATION_COMPLETED = 'OPERATION_COMPLETED';

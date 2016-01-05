@@ -5,9 +5,11 @@ import { connect } from 'react-redux';
 
 import Counter from '../Counter/Counter';
 import List from '../List/List';
+import ListOperation from '../ListOperation/ListOperation';
 
 import * as CounterActions from '../../actions/counterAction'
 import * as ListActions from '../../actions/listAction';
+import * as ListOperationActions from '../../actions/listOperationAction';
 
 const AppHandlers = {
   _calculation(props, context) {
@@ -27,15 +29,25 @@ class App extends Component {
   }
 
   render() {
-    const { counterNumber, listProps ,CounterActions, ListActions } = this.props;
+    const {
+      counterNumber,
+      listProps ,
+      CounterActions,
+      ListActions,
+      listOperationProps,
+      ListOperationActions } = this.props;
     return (
       <div>
-        <h1>Stage1: Number</h1>
-        <Counter counterNumber={counterNumber} actions={CounterActions}/>
+        <h1>(Day.1) Stage1: Number</h1>
+        <Counter counterNumber={counterNumber} {...CounterActions}/>
         <hr />
-        <h1>Stage2: List</h1>
+        <h1>(Day.2) Stage2: List</h1>
         <List listProps={listProps} {...ListActions} />
-        <h1>Stage3: List Operation</h1>
+        <hr />
+        <h1>(Day.3) Stage3: List Operation</h1>
+        <ListOperation { ...listOperationProps } { ...ListOperationActions }/>
+        <hr />
+        <h1>(Day.4) Stage4: List Vote Operation </h1>
       </div>
     );
   }
@@ -44,13 +56,15 @@ class App extends Component {
 const mapStateToProps = (state) => {
   return {
     counterNumber: state.counter.counterNumber,
-    listProps: state.list
+    listProps: state.list,
+    listOperationProps: state.listOperation
   };
 }
 const mapDispatchToProps = (dispatch) => {
   return {
+    CounterActions: bindActionCreators(CounterActions, dispatch),
     ListActions: bindActionCreators(ListActions, dispatch),
-    CounterActions: bindActionCreators(CounterActions, dispatch)
+    ListOperationActions: bindActionCreators(ListOperationActions, dispatch)
   }
 }
 

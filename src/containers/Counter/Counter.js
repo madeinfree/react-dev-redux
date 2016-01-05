@@ -8,11 +8,11 @@ const CounterHandlers = {
     }
 
   },
-  _onIncrement(actions) {
-    return actions.COUNTER_INCREMENT
+  _onIncrement() {
+    return this.props.COUNTER_INCREMENT()
   },
-  _onDecrement(actions) {
-    return actions.COUNTER_DECREMENT
+  _onDecrement() {
+    return this.props.COUNTER_DECREMENT()
   }
 }
 
@@ -26,15 +26,14 @@ export default class Counter extends Component {
   }
 
   render() {
-    const { counterNumber, actions } = this.props;
-    const { _onIncrement, _onDecrement } = this;
+    const { counterNumber } = this.props;
     return (
       <div>
         <h1>The number is: {counterNumber}</h1>
         <div>
-          <button onClick={_onIncrement(actions)}>+</button>
+          <button onClick={this._onIncrement}>+</button>
           {' '}
-          <button onClick={_onDecrement(actions)}>-</button>
+          <button onClick={this._onDecrement}>-</button>
         </div>
       </div>
     );

@@ -36,7 +36,7 @@ class List extends Component {
     this.state = this._caculation(props, context)
   }
   render() {
-    let { ListActions, listProps } = this.props
+    let { listProps } = this.props
     return (
       <div>
         <form onSubmit={this._onSubmit}>
