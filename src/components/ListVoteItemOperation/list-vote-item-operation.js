@@ -55,6 +55,7 @@ export default class ListItemVoteOperation extends Component {
     })
     return (
       <div>
+        <h3>Press the `Enter` key to add some `ITEM` and `Click` `ITEM` to stop vote </h3>
         <form onSubmit={this._onSubmit}>
           <input value={this.state.text} onChange={this._onChange} placeholder="write something.."/>
         </form>

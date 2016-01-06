@@ -53,6 +53,8 @@ class App extends Component {
         <hr />
         <h1>(Day.4) Stage4: List Vote Operation </h1>
         <ListVoteOperation items={listVoteOperationProps} { ...ListVoteOperationActions }/>
+        <hr />
+        <h1>(Day.5) Stage5: Shopping-Cart </h1>
       </div>
     );
   }
